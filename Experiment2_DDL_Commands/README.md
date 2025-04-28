@@ -208,7 +208,8 @@ FROM Old_customers;6
 
 
 **Question 7**
----Write a SQL query to Add a new column named "discount" with the data type DECIMAL(5,2) to the "customer" table.
+---
+Write a SQL query to Add a new column named "discount" with the data type DECIMAL(5,2) to the "customer" table.
 
 Sample table: customer
 
