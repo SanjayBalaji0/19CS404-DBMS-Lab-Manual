@@ -21,19 +21,6 @@ Design a database to manage students, instructors, programs, courses, and studen
 - Track course enrollments by students and enrollment date.
 - Add support for prerequisites (some courses require others).
 
----
-
-### 🔹 Scenario 2: Hospital Database
-Design a database for patient management, appointments, medical records, and billing.
-
-**User Requirements:**
-- Patient details including contact and insurance.
-- Doctors and their departments, contact info, specialization.
-- Appointments with reason, time, patient-doctor link.
-- Medical records with treatments, diagnosis, test results.
-- Billing and payment details for each appointment.
-
----
 
 ## 📝 Tasks:
 1. Identify entities, relationships, and attributes.
@@ -45,28 +32,119 @@ Design a database for patient management, appointments, medical records, and bil
    - Why you chose the entities and relationships.
    - How you modeled prerequisites or billing.
 
-# ER Diagram Submission - Student Name
-
 ## Scenario Chosen:
-University / Hospital (choose one)
+Hospital
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+![image](https://github.com/user-attachments/assets/236a7e45-21e2-434e-b8b3-f1aa9a1edae3)
 
-## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
-...
+## Entities and Attributes
+### Doctor:
+DoctorID (Primary Key)
+Full Name
+Phone
+Work Schedule
+Email
+Specialization
+Nurse
 
-## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
-...
+### Patient:
+PatientID (Primary Key)
+Full Name
+DOB (Date of Birth)
+Gender
+Address
+Phone
+Email
+Insurance
 
-## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+### Department:
+DepartmentID (Primary Key)
+DepartmentName
+DepartmentHead
 
-## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+### Appointment:
+AppointmentID (Primary Key)
+Appointment Date
+Time
+Reason
+Notes
+PatientID (Foreign Key)
+DoctorID (Foreign Key)
 
-## RESULT
+### Billing:
+BillingID (Primary Key)
+AppointmentID (Foreign Key)
+Billing Date
+Total Amount
+Status
+PatientID (Foreign Key)
+
+### Payment:
+PaymentID (Primary Key)
+BillingID (Foreign Key)
+Payment Date
+Transaction Details
+Payment Method
+
+### Medical Record:
+MedicalRecordID (Primary Key)
+PatientID (Foreign Key)
+AppointmentID (Foreign Key)
+DoctorID (Foreign Key)
+Treatments
+Test Results
+Diagnoses
+Medications
+
+## Relationships and Constraints
+### Assigned to (Doctor - Department):
+1 Department → M Doctors
+(1:M cardinality)
+Conducts (Doctor - Appointment):
+1 Doctor → M Appointments
+(1:M cardinality)
+
+### Schedule (Patient - Appointment):
+1 Patient → M Appointments
+(1:M cardinality)
+
+### Generates (Appointment - Billing):
+1 Appointment → 1 Billing
+(1:1 cardinality)
+
+### Pays (Billing - Payment):
+1 Billing → 1 Payment
+(1:1 cardinality)
+
+### Has Records (Patient - Medical Record):
+1 Patient → M Medical Records
+(1:M cardinality)
+
+### Creates Record (Doctor - Medical Record):
+1 Doctor → M Medical Records
+(1:M cardinality)
+
+### Documents (Appointment - Medical Record):
+1 Appointment → 1 Medical Record
+(1:1 cardinality)
+
+## Design Choices
+### Clear Department-Doctor Assignment:
+Departments are distinct and relate to multiple doctors to allow specialization management.
+
+### Appointment as a Connector:
+Appointment links both doctor and patient, recording when and why they meet.
+
+### Separate Billing and Payment Entities:
+Billing is generated after appointments, and payment is linked separately, supporting more complex billing cycles.
+
+### Independent Medical Records:
+Medical records are attached to both patients and doctors but are independent of billing or payment processes.
+
+### Email and Insurance Captured at Patient Level:
+To ensure communication and insurance verification are handled directly.
+
+## RESULT:
+
+The ERD effectively models the hospital appointment system, clearly separating key aspects like scheduling, department assignment, and medical history tracking, ensuring scalability and ease of future extensions like billing and lab test integration.
