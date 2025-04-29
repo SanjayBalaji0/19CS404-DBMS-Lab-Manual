@@ -1,5 +1,6 @@
 # Experiment 3: DML Commands
-
+## Name: Sanjay Balaji S
+## Reg.No: 212223240149
 ## AIM
 To study and implement DML (Data Manipulation Language) commands.
 
