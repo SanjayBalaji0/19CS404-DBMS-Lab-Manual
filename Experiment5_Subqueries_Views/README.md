@@ -42,7 +42,7 @@ DROP VIEW view_name;
 Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is greater than $4500.
 
 Sample table: CUSTOMERS
-
+```
 ID          NAME        AGE         ADDRESS     SALARY
 ----------  ----------  ----------  ----------  ----------
 
@@ -54,15 +54,16 @@ ID          NAME        AGE         ADDRESS     SALARY
 6          Komal         22              Hyderabad       4500
 
 7           Muffy          24              Indore            10000
+```
 For example:
-
+```
 Result
 ID          NAME        AGE         ADDRESS     SALARY
 ----------  ----------  ----------  ----------  ----------
 4           Chaitali    25          Mumbai      6500
 5           Hardik      27          Bhopal      8500
 7           Muffy       24          Indore      10000
-
+```
 ```sql
  select * from CUSTOMERS WHERE ID IN (SELECT ID FROM CUSTOMERS WHERE SALARY > 4500);
 ```
