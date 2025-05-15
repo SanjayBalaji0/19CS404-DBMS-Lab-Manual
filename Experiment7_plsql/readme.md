@@ -1,8 +1,6 @@
 # Experiment 7: PL/SQL – Variables, Control Structures and Loops
 ## Name: Sanjay Balaji S
 ## Reg.No: 212223240149
-# Experiment 7: PL/SQL – Variables, Control Structures and Loops
-
 ## AIM
 To write and execute simple PL/SQL programs using variables, loops, and conditional statements.
 
